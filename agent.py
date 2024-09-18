@@ -1,10 +1,9 @@
 import streamlit as st
 from openai import OpenAI
-from dotenv import load_dotenv
 import os
-load_dotenv()
 
-client = OpenAI(api_key=os.environ.get("OPEN_AI_API_KEY"))
+
+client = OpenAI(api_key=st.secrets["OPEN_AI_API_KEY"])
 
 def generate_response(message_history):
     messages = [{"role": m["role"], "content": m["content"]} for m in message_history]
